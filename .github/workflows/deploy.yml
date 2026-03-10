@@ -6,6 +6,7 @@ on:
   workflow_dispatch:        # allow manual runs from the Actions tab
 
 permissions:
+    contents: read
     pages: write
     id-token: write
 
