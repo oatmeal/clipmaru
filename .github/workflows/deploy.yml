@@ -1,0 +1,18 @@
+name: Deploy clip archive
+
+on:
+  schedule:
+    - cron: '0 13 * * *'   # every day at 13:00 UTC
+  workflow_dispatch:        # allow manual runs from the Actions tab
+
+jobs:
+  deploy:
+    uses: oatmeal/twist-clear/.github/workflows/deploy.yml@master
+    with:
+      streamers: ${{ vars.STREAMERS }}
+      site_title: ${{ vars.SITE_TITLE }}
+      og_description: ${{ vars.OG_DESCRIPTION }}
+    secrets:
+      TWITCH_CLIENT_ID: ${{ secrets.TWITCH_CLIENT_ID }}
+      TWITCH_CLIENT_SECRET: ${{ secrets.TWITCH_CLIENT_SECRET }}
+      TWITCH_WEB_CLIENT_ID: ${{ secrets.TWITCH_WEB_CLIENT_ID }}
