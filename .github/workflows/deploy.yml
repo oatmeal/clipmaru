@@ -1,4 +1,4 @@
-name: Deploy clip archive
+name: Deploy clip viewer
 
 on:
   schedule:
