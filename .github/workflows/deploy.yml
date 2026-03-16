@@ -24,6 +24,7 @@ jobs:
       scrape_mode: ${{ github.event.inputs.mode || 'fetch' }}
       streamers: ${{ vars.STREAMERS }}
       site_title: ${{ vars.SITE_TITLE }}
+      site_heading: ${{ vars.SITE_HEADING }}
       site_description: ${{ vars.SITE_DESCRIPTION }}
       og_description: ${{ vars.OG_DESCRIPTION }}
       accent_color: ${{ vars.ACCENT_COLOR }}
