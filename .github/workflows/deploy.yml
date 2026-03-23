@@ -9,8 +9,8 @@ on:
         description: 'Scraping mode'
         required: false
         type: choice
-        options: [fetch, update, skip]
-        default: fetch
+        options: [backfill, fetch, update, skip]
+        default: skip
 
 permissions:
     contents: read
@@ -21,7 +21,7 @@ jobs:
   deploy:
     uses: oatmeal/twist-clear/.github/workflows/deploy.yml@master
     with:
-      scrape_mode: ${{ github.event.inputs.mode || 'fetch' }}
+      scrape_mode: ${{ github.event.inputs.mode || 'backfill' }}
       streamers: ${{ vars.STREAMERS }}
       site_title: ${{ vars.SITE_TITLE }}
       site_heading: ${{ vars.SITE_HEADING }}
