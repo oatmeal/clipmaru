@@ -22,6 +22,7 @@ jobs:
     uses: oatmeal/twist-clear/.github/workflows/deploy.yml@master
     with:
       scrape_mode: ${{ github.event.inputs.mode || 'backfill' }}
+      backfill_max_calls: 100000  # cap backfill runs to ~3.5 h (well under the 6 h Actions limit)
       streamers: ${{ vars.STREAMERS }}
       site_title: ${{ vars.SITE_TITLE }}
       site_heading: ${{ vars.SITE_HEADING }}
