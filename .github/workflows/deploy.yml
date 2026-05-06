@@ -11,6 +11,10 @@ on:
         type: choice
         options: [backfill, fetch, update, skip]
         default: skip
+      live_after:
+        description: 'Highlight clips after this ISO 8601 timestamp as live (e.g. 2025-05-06T18:00:00Z). Leave blank to auto-detect.'
+        required: false
+        default: ''
 
 permissions:
     contents: read
