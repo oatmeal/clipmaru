@@ -1,0 +1,160 @@
+.kusudama {
+  position: relative;
+  display: inline-block;
+  flex: none;
+  width: 26px;
+  height: 26px;
+  margin: 0 6px 0 2px;
+  vertical-align: middle;
+  z-index: 11;
+  cursor: pointer;
+  transform-origin: 50% -20px;
+  animation: kd-sway 3.4s ease-in-out infinite alternate;
+}
+@keyframes kd-sway {
+  from {
+    transform: rotate(-4deg);
+  }
+  to {
+    transform: rotate(4deg);
+  }
+}
+.kusudama::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% - 1px);
+  width: 1px;
+  height: 60px;
+  margin-left: -0.5px;
+  background: #b08a3a;
+}
+.kd-half {
+  position: absolute;
+  top: 0;
+  width: 13px;
+  height: 26px;
+  background:
+    linear-gradient(
+      transparent 41%,
+      #d8342f 41%,
+      #d8342f 59%,
+      transparent 59%),
+    radial-gradient(
+      circle at 9px 8px,
+      #fff7cf 0,
+      #f6d058 5px,
+      #d9a21e 11px,
+      #a06a0c 16px,
+      #6e4405 19px);
+  background-size: 26px 26px;
+  box-shadow: inset 0 0 0 0.5px rgba(90, 50, 0, 0.55);
+  transition: transform 0.5s cubic-bezier(0.3, 1.4, 0.55, 1) 0.4s;
+}
+.kd-l {
+  left: 0;
+  border-radius: 13px 0 0 13px;
+  transform-origin: 100% 0;
+}
+.kd-r {
+  left: 13px;
+  border-radius: 0 13px 13px 0;
+  background-position: -13px 0;
+  transform-origin: 0 0;
+}
+.kusudama.open .kd-l {
+  transform: rotate(62deg);
+  transition-delay: 0s;
+}
+.kusudama.open .kd-r {
+  transform: rotate(-62deg);
+  transition-delay: 0s;
+}
+.kd-banner {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 15px;
+  margin-left: -7.5px;
+  padding: 4px 0 3px;
+  box-sizing: border-box;
+  background: #fffdf6;
+  border: 1px solid #c8302b;
+  border-top: 3px solid #a06a0c;
+  color: #2a1820;
+  font:
+    700 10px/1.05 "Hiragino Mincho ProN",
+    "Yu Mincho",
+    "Noto Serif JP",
+    serif;
+  letter-spacing: 1px;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  white-space: nowrap;
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 0.4s ease-in;
+}
+.kusudama.open .kd-banner {
+  clip-path: inset(0 0 -1px 0);
+  transition: clip-path 0.8s cubic-bezier(0.2, 0.8, 0.3, 1) 0.3s;
+}
+.kd-tassel {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 2px;
+  height: 6px;
+  margin-left: -1px;
+  background: #c8302b;
+  transition: opacity 0.3s 0.5s, transform 0.3s 0.5s;
+}
+.kd-tassel::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: -2px;
+  width: 6px;
+  height: 6px;
+  background: #c8302b;
+  border-radius: 1px 1px 3px 3px;
+}
+.kusudama.open .kd-tassel {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.4s, transform 0.4s ease-in;
+}
+.kd-confetti {
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  pointer-events: none;
+}
+.kd-confetti i {
+  position: absolute;
+  left: -2px;
+  top: -3px;
+  width: 4px;
+  height: 6px;
+  background: var(--c);
+  opacity: 0;
+}
+.kusudama.open .kd-confetti i {
+  animation: kd-fall 2s cubic-bezier(0.25, 0.7, 0.4, 1) var(--d, 0s) both;
+}
+@keyframes kd-fall {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg);
+  }
+  30% {
+    opacity: 1;
+    transform: translate(calc(var(--x) * 0.7), -12px) rotate(calc(var(--r) * 0.4));
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--x), var(--y)) rotate(var(--r));
+  }
+}
